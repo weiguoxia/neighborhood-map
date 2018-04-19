@@ -10,7 +10,6 @@ class App extends Component {
   };
 
   updatePlaces = (query) => {
-    console.log(query.target.value);
     query = query.target.value;
     if (query) {
       const match = new RegExp(escapeRegExp(query), 'i');
@@ -18,7 +17,6 @@ class App extends Component {
         pleaces :this.state.venues.filter((v) => match.test(v.name))
       });
     } else {
-      console.log('aha');
       this.setState({
         pleaces :this.state.venues
       });
