@@ -1,70 +1,109 @@
 #map {
     width:100%;
-    height: 1000px;
+    height: 100%;
+    /* position: absolute; */
+
 }
 
-#title {
-    width:1000px;
-}
+/* #title { */
+/*     width:100%; */
+/* } */
 
 .container-fluid {
-    align-items: stretch;
+    position:fixed;
+    padding:0;
+    margin:0;
+
+    top:0;
+    left:0;
+
+    width: 100%;
+    height: 100%;
     display: flex;
+    flex-wrap: wrap;
+    align-items:stretch;
 
 }
+.container-map {
+    display: flex;
+    flex-direction: column;
+    top:0;
+    left:0;
+    width: 90%;
+    height: 100%;
+
+}
+.container-map > div {
+    /* these are the flex items */
+    /* flex: 1; */
+}
 #sidebar {
-    min-width: 250px;
-    max-width: 250px;
+    min-width: 10%;
+    max-width: 10%;
+}
+
+.container-map.active {
+    width: 100%;
 }
 
 #sidebar.active {
-    margin-left: -250px;
+    margin-left: -11%;
 }
 
 /* Position and sizing of burger button */
 .bm-burger-button {
-  position: fixed;
-  width: 36px;
-  height: 30px;
-  left: 36px;
-  top: 36px;
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 36px;
+    top: 36px;
 }
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #373a47;
+    background: #373a47;
 }
 
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
-  height: 24px;
-  width: 24px;
+    height: 24px;
+    width: 24px;
 }
 
 /* Color/shape of close button cross */
 .bm-cross {
-  background: #bdc3c7;
+    background: #bdc3c7;
 }
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
-  padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
+    background: #373a47;
+    padding: 2.5em 1.5em 0;
+    font-size: 1.15em;
 }
 
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
-  fill: #373a47;
+    fill: #373a47;
 }
 
 /* Wrapper for item list */
 .bm-item-list {
-  color: #b8b7ad;
-  padding: 0.8em;
+    color: #b8b7ad;
+    padding: 0.8em;
 }
 
 /* Styling of overlay */
 .bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
+    background: rgba(0, 0, 0, 0.3);
+}
+@media screen and (max-width: 1000px) {
+    #sidebar {
+        min-width: 100%;
+        max-width: 100%;
+    }
+    #sidebar.active {
+        display:none;
+    }
+
 }

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Map from "./Map";
 import Sidebar from "./Sidebar";
 import escapeRegExp from 'escape-string-regexp';
+import DocumentMeta from 'react-document-meta';
+
 
 class App extends Component {
   state = {
@@ -37,11 +39,18 @@ class App extends Component {
   }
 
   render() {
+    const meta = {
+      // name: "viewport",
+      // content: 'width=device-width, initial-scale=1'
+    };
     return (
-      <div className='container-fluid'>
-        <Sidebar id='sidebar' venues={this.state.pleaces} updatePlaces={this.updatePlaces}/>
-        <Map id='google-map'venues={this.state.pleaces} />
-      </div>
+      <DocumentMeta {...meta}>
+        <div  className='container-fluid'>
+          <Sidebar id='sidebar' venues={this.state.pleaces} updatePlaces={this.updatePlaces}/>
+          <Map id='google-map'venues={this.state.pleaces} />
+        </div>
+      </DocumentMeta>
+
     );
   }
 }
