@@ -5,16 +5,23 @@ class Map extends Component {
     super(props);
     this.state = {
       otherChecked: this.props.venues,
+      offlineNotice :false
     };
   }
-
+  loadError= (oError)=> {
+    this.setState({
+      offlineNotice : true
+    });
+  }
   state = {
     makerList : []
   }
 
+
   componentDidMount= () => {
     window.initMap = this.initMap;
     const script = document.createElement("script");
+    script.onerror =this.loadError;
     script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDHLg6xJt1-ED_9YY_WuR-MOIDSCih_jg4&v=3&callback=initMap";
     script.async = true;
     document.body.appendChild(script);
@@ -107,10 +114,12 @@ class Map extends Component {
 
   initMap= ()=> {
     const google=window.google;
+
     window.map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 40.7413549, lng: -73.9980244},
       zoom: 13
     });
+
     this.displayPleaces(this.props.venues);
 
   }
@@ -132,10 +141,13 @@ class Map extends Component {
             Toggle Sidebar
           </button>
         </div>
-        { /* <div>
-          <p>123</p>
-        </div> */}
-        <div id='map'>
+        {this.state.offlineNotice&& <div className="alert alert-danger" role="alert">
+            <strong>
+                Google map can not load!
+              </strong>
+        </div>}
+
+        <div id='map' role="application">
         </div>
       </div>
     );
